@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-const POSTER_PATH = 'http://image.tmdb.org/t/p/w342';
+import Movie from './Movie';
 
 class DisplayRandomMovie extends Component {
   state = {
@@ -12,13 +11,15 @@ class DisplayRandomMovie extends Component {
       .then(res => res.json())
       .then(latestMovie => {
         const randomId = Math.floor(Math.random() * latestMovie.id);
-        return fetch(`https://api.themoviedb.org/3/movie/${randomId}?api_key=31bd793c883026448a472f7cae25d56e&language=fr`);
+        return fetch(`https://api.themoviedb.org/3/movie/${randomId}?api_key=31bd793c883026448a472f7cae25d56e&language=fr&include_adult=false`);
       })
       .then(res => {
-        if (!res.ok) {
+        if (res.ok) {
+          return res.json();
+        } else {
           this.getRandomMovie();
+          throw new Error(res.statusText);
         }
-        return res.json();
       })
       .then(randomMovie => {
         this.setState({
@@ -33,14 +34,11 @@ class DisplayRandomMovie extends Component {
   }
 
   render() {
-    const { movie } = this.state;
     return (
       <div>
-        <h1>{movie.title}</h1>
-        {movie.poster_path && <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />}
-        <p>{movie.release_date}</p>
-        <p>{movie.overview}</p>
-        <button onClick={this.getRandomMovie}>Autre film</button>
+        <button className="btn" onClick={this.history}>Mes votes</button>
+        <button className="btn btn--red" onClick={this.getRandomMovie}>Film suivant</button>
+        <Movie movie={this.state.movie} />
       </div>
     );
   }
