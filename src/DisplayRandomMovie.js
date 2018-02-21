@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 
-class DisplayRandomMovie extends Component {
-  state = {
-    movie: {},
+export default class DisplayRandomMovie extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      randomMovie: {},
+      votes: []
+    }
   }
 
   getRandomMovie = () => {
-    fetch('https://api.themoviedb.org/3/movie/latest?api_key=31bd793c883026448a472f7cae25d56e')
-      .then(res => res.json())
-      .then(latestMovie => {
-        const randomId = Math.floor(Math.random() * latestMovie.id);
-        return fetch(`https://api.themoviedb.org/3/movie/${randomId}?api_key=31bd793c883026448a472f7cae25d56e&language=fr`);
-      })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          this.getRandomMovie();
-          throw new Error(res.statusText);
-        }
-      })
-      .then(randomMovie => {
+    const today = new Date();
+    const randomMinMax = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+    const randomYear = randomMinMax(1960, today.getFullYear());
+    const randomMonth = String(randomMinMax(1, 12));
+    const randomVoteAverage = (Math.floor(Math.random() * 10) + Math.random()).toFixed(1);
+    const randomMovieInPage = randomMinMax(0, 19);
+    console.log(randomYear, randomMonth, randomVoteAverage, randomMovieInPage);
+    console.log(`https://api.themoviedb.org/3/discover/movie?api_key=31bd793c883026448a472f7cae25d56e&language=fr&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${randomYear}-${randomMonth.length < 2 ? '0' + randomMonth : randomMonth}-01&vote_average.gte=${randomVoteAverage}`);
+
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=31bd793c883026448a472f7cae25d56e&language=fr&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${randomYear}-${randomMonth.length < 2 ? '0' + randomMonth : randomMonth}-01&vote_average.gte=${randomVoteAverage}`)
+      .then(response => response.json())
+      .then(movieList => {
+        console.log(movieList.results);
         this.setState({
-          movie: randomMovie
+          randomMovie: movieList.results[randomMovieInPage]
         });
+        console.log(this.state.randomMovie.title, this.state.randomMovie.release_date);
       })
       .catch(error => console.log(error));
   }
@@ -34,13 +37,12 @@ class DisplayRandomMovie extends Component {
   }
 
   render() {
+    const { randomMovie } = this.state;
     return (
       <div>
+        <Movie movie={randomMovie} />
         <button className="btn btn--red" onClick={this.getRandomMovie}>Film suivant</button>
-        <Movie movie={this.state.movie} />
       </div>
     );
   }
 }
-
-export default DisplayRandomMovie;

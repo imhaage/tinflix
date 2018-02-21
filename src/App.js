@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import tmdbLogo from './tmdbLogo.svg';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,12 +28,10 @@ class App extends Component {
           <img className="App-tmdbLogo" src={tmdbLogo} alt="The movie DB logo" />
         </header>
         <section className="App-content">
-          <button className="btn" onClick={this.toggleMyVotes}>Mes votes</button>
+          <button className="btn btn--green" onClick={this.toggleMyVotes}>{myVotesHidden ? 'Mes votes' : 'Voter'}</button>
           {myVotesHidden ? <DisplayRandomMovie /> : <MyVotes />}
         </section>
       </div>
     );
   }
 }
-
-export default App;

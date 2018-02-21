@@ -1,3 +1,7 @@
+html{
+    font-size:80%;
+  }
+
 body{
   font-family: 'Montserrat', sans-serif;
   background:#303030 url('./film-roll-min.jpg') no-repeat;
@@ -14,7 +18,8 @@ p {
 }
 
 .btn {
-  padding: 10px 20px;
+  width:140px;
+  padding:10px;
   box-shadow: 0 0 2px #333;
   border:none;
   font-size: 1.2rem;
@@ -23,6 +28,11 @@ p {
 
 .btn--red {
   background-color: #B70E17;
+  color:#fff;
+}
+
+.btn--green {
+  background-color: #00C871;
   color:#fff;
 }
 
@@ -38,14 +48,14 @@ p {
 
 .App-logo {
   width: 120px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .App-tmdbLogo {
   width:80px;
   float: right;
   margin-top: 4px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .App-content {
@@ -56,7 +66,7 @@ p {
 
 .App-content-movie {
   background: #fff;
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.8);
   padding: 20px 10px;
   box-shadow: 0 0 8px#999;
 }
@@ -80,4 +90,10 @@ p {
   line-height: 278px;
   color:#333;
   background-color: #eee;
+}
+
+@media (min-width:500px){
+  html{
+    font-size:100%;
+  }
 }
