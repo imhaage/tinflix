@@ -6,12 +6,12 @@ class DisplayRandomMovie extends Component {
     movie: {},
   }
 
-  getRandomMovie = async () => {
+  getRandomMovie = () => {
     fetch('https://api.themoviedb.org/3/movie/latest?api_key=31bd793c883026448a472f7cae25d56e')
       .then(res => res.json())
       .then(latestMovie => {
         const randomId = Math.floor(Math.random() * latestMovie.id);
-        return fetch(`https://api.themoviedb.org/3/movie/${randomId}?api_key=31bd793c883026448a472f7cae25d56e&language=fr&include_adult=false`);
+        return fetch(`https://api.themoviedb.org/3/movie/${randomId}?api_key=31bd793c883026448a472f7cae25d56e&language=fr`);
       })
       .then(res => {
         if (res.ok) {
@@ -36,7 +36,6 @@ class DisplayRandomMovie extends Component {
   render() {
     return (
       <div>
-        <button className="btn" onClick={this.history}>Mes votes</button>
         <button className="btn btn--red" onClick={this.getRandomMovie}>Film suivant</button>
         <Movie movie={this.state.movie} />
       </div>
