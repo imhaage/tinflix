@@ -19,21 +19,24 @@ p {
 
 .btn {
   width:140px;
-  padding:10px;
   box-shadow: 0 0 2px #333;
   border:none;
   font-size: 1.2rem;
-  margin: 20px 10px;
 }
 
-.btn--red {
+.btn--next-movie {
   background-color: #B70E17;
   color:#fff;
+  margin: 20px 10px;
+  padding:10px;
 }
 
-.btn--green {
+.btn--my-votes {
   background-color: #00C871;
   color:#fff;
+  float: right;
+  margin-right: 20px;
+  padding:8px;
 }
 
 .App {
@@ -43,19 +46,19 @@ p {
 .App-header {
   background-color: #222;
   color:#fff;
-  padding: 10px 0;
+  padding: 12px 0 10px;
+  text-align: center;
 }
 
 .App-logo {
   width: 120px;
-  margin-left: 20px;
 }
 
 .App-tmdbLogo {
   width:80px;
-  float: right;
+  float: left;
   margin-top: 4px;
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .App-content {

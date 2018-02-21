@@ -24,11 +24,11 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <img className="App-tmdbLogo" src={tmdbLogo} alt="The movie DB logo" />
+          <img src={logo} className="App-logo" alt="logo" />
+          <button className="btn btn--my-votes" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button>
         </header>
         <section className="App-content">
-          <button className="btn btn--green" onClick={this.toggleMyVotes}>{myVotesHidden ? 'Mes votes' : 'Voter'}</button>
           {myVotesHidden ? <DisplayRandomMovie /> : <MyVotes />}
         </section>
       </div>

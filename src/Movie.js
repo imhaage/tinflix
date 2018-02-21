@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w185';
 
 export default class Movie extends Component {
-
   render() {
     const { movie } = this.props;
     return (

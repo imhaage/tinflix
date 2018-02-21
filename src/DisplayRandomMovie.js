@@ -17,17 +17,13 @@ export default class DisplayRandomMovie extends Component {
     const randomMonth = String(randomMinMax(1, 12));
     const randomVoteAverage = (Math.floor(Math.random() * 10) + Math.random()).toFixed(1);
     const randomMovieInPage = randomMinMax(0, 19);
-    console.log(randomYear, randomMonth, randomVoteAverage, randomMovieInPage);
-    console.log(`https://api.themoviedb.org/3/discover/movie?api_key=31bd793c883026448a472f7cae25d56e&language=fr&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${randomYear}-${randomMonth.length < 2 ? '0' + randomMonth : randomMonth}-01&vote_average.gte=${randomVoteAverage}`);
 
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=31bd793c883026448a472f7cae25d56e&language=fr&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${randomYear}-${randomMonth.length < 2 ? '0' + randomMonth : randomMonth}-01&vote_average.gte=${randomVoteAverage}`)
       .then(response => response.json())
       .then(movieList => {
-        console.log(movieList.results);
         this.setState({
           randomMovie: movieList.results[randomMovieInPage]
         });
-        console.log(this.state.randomMovie.title, this.state.randomMovie.release_date);
       })
       .catch(error => console.log(error));
   }
@@ -41,7 +37,7 @@ export default class DisplayRandomMovie extends Component {
     return (
       <div>
         <Movie movie={randomMovie} />
-        <button className="btn btn--red" onClick={this.getRandomMovie}>Film suivant</button>
+        <button className="btn btn--next-movie" onClick={this.getRandomMovie}>Film suivant</button>
       </div>
     );
   }
