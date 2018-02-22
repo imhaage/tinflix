@@ -31,6 +31,7 @@ export default class Movie extends Component {
     if (rating !== 0) {
       const key = `${movie.id}`;
       const movieRated = {
+        id: movie.id,
         title: movie.title,
         ratingDate: Date.now(),
         rating: rating

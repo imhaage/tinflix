@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DisplayRandomMovie from './DisplayRandomMovie';
-import MyVotes from './MyVotes';
+import MyRatings from './MyRatings';
 import logo from './logo.svg';
 import tmdbLogo from './tmdbLogo.svg';
 import './App.css';
@@ -29,7 +29,7 @@ export default class App extends Component {
           <button className="btn btn--my-votes" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button>
         </header>
         <section className="App-content">
-          {myVotesHidden ? <DisplayRandomMovie /> : <MyVotes />}
+          {myVotesHidden ? <DisplayRandomMovie /> : <MyRatings />}
         </section>
       </div>
     );
