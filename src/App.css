@@ -4,8 +4,7 @@ html{
 
 body{
   font-family: 'Montserrat', sans-serif;
-  background:#303030 url('./film-roll-min.jpg') no-repeat;
-  background-size: cover;
+  background-color:#ececec;
 }
 
 h1 {
@@ -17,28 +16,6 @@ p {
   margin: 0;
 }
 
-.btn {
-  width:140px;
-  box-shadow: 0 0 2px #333;
-  border:none;
-  font-size: 1.2rem;
-}
-
-.btn--next-movie {
-  background-color: #B70E17;
-  color:#fff;
-  margin: 20px 10px;
-  padding:10px;
-}
-
-.btn--my-votes {
-  background-color: #00C871;
-  color:#fff;
-  float: right;
-  margin-right: 20px;
-  padding:8px;
-}
-
 .App {
   min-height: 100vh;
 }
@@ -46,19 +23,19 @@ p {
 .App-header {
   background-color: #222;
   color:#fff;
-  padding: 12px 0 10px;
+  padding: 10px 0 11px;
   text-align: center;
 }
 
 .App-logo {
-  width: 120px;
+  width: 100px;
 }
 
 .App-tmdbLogo {
-  width:80px;
+  width:60px;
   float: left;
   margin-top: 4px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .App-content {
@@ -68,10 +45,7 @@ p {
 }
 
 .App-content-movie {
-  background: #fff;
-  background: rgba(255,255,255,.8);
-  padding: 20px 10px;
-  box-shadow: 0 0 8px#999;
+  margin-top:20px;
 }
 
 .App-content-poster {
@@ -95,8 +69,54 @@ p {
   background-color: #eee;
 }
 
+.rating-stars {
+  font-size: 2em;
+}
+
+.btn {
+  box-shadow: 0 0 2px #333;
+  border:none;
+  padding:0.4em 0.4em;
+}
+
+.btn--next-movie {
+  width:140px;
+  background-color: #B70E17;
+  color:#fff;
+  font-size: 1.2rem;
+  margin: 20px 10px;
+}
+
+.btn--my-votes {
+  background-color: #00C871;
+  color:#fff;
+  float: right;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
 @media (min-width:500px){
   html{
     font-size:100%;
+  }
+  body{
+    background: url('./film-roll-min.jpg') no-repeat;
+    background-size: cover;
+  }
+  .btn--my-votes {
+    margin-right: 20px;
+  }
+  .App-logo {
+    width: 120px;
+  }
+  .App-tmdbLogo {
+    width:80px;
+    margin-left: 20px;
+  }
+  .App-content-movie {
+    background: #fff;
+    background: rgba(255,255,255,.8);
+    padding: 20px 10px;
+    box-shadow: 0 0 8px#999;
   }
 }

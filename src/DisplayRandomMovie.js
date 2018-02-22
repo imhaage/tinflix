@@ -36,7 +36,7 @@ export default class DisplayRandomMovie extends Component {
     const { randomMovie } = this.state;
     return (
       <div>
-        <Movie movie={randomMovie} />
+        <Movie movie={randomMovie} key={randomMovie.id} />
         <button className="btn btn--next-movie" onClick={this.getRandomMovie}>Film suivant</button>
       </div>
     );
