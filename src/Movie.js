@@ -8,24 +8,43 @@ export default class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0
+      rating: 0,
+      isRated: false
     };
   }
 
-  onStarClick(nextValue, prevValue, name) {
-    console.log(nextValue, prevValue, name);
-    this.setState({ rating: nextValue });
-  }
-
-  componentDidMount() {
+  resetRating = () => {
     this.setState({
       rating: 0
     });
+  };
+
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({
+      rating: nextValue
+    });
+  }
+
+  submitRating = () => {
+    const { movie } = this.props;
+    const { rating } = this.state;
+    if (rating !== 0) {
+      const key = `${movie.id}`;
+      const movieRated = {
+        title: movie.title,
+        ratingDate: Date.now(),
+        rating: rating
+      }
+      window.localStorage.setItem(key, JSON.stringify(movieRated));
+      this.setState({
+        isRated: true
+      })
+    }
   }
 
   render() {
     const { movie } = this.props;
-    const { rating } = this.state;
+    const { rating, isRated } = this.state;
     return (
       <div className="App-content-movie">
         <h1>{movie.title}</h1>
@@ -38,14 +57,26 @@ export default class Movie extends Component {
             ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
             : <div>Image non disponible</div>}
         </div>
-        <StarRatingComponent
-          className="rating-stars"
-          name="rate1"
-          value={rating}
-          onStarClick={this.onStarClick.bind(this)}
-        />
+        <div className="App-content-movie-rating">
+          <StarRatingComponent
+            key={`id${movie.id}`}
+            className="rating-stars"
+            name="rate"
+            value={rating}
+            onStarClick={this.onStarClick}
+            editing={!isRated}
+          />
+          {
+            !isRated &&
+            <div>
+              <button className="btn btn--reset" onClick={this.resetRating}><i className="fas fa-ban"></i> Reset</button>
+              <button className="btn btn--submit" onClick={this.submitRating}><i className="fas fa-check"></i> Valider</button>
+            </div>
+          }
+        </div>
+
+
       </div>
     );
   }
 }
-
