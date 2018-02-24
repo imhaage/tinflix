@@ -26,7 +26,9 @@ export default class MyRatings extends Component {
   }
 
   componentWillMount() {
-    this.getRatingsFromLocalStorage();
+    if (Object.keys(localStorage).length !== 0) {
+      this.getRatingsFromLocalStorage();
+    }
   }
 
   render() {
