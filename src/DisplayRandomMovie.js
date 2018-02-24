@@ -7,7 +7,7 @@ export default class DisplayRandomMovie extends Component {
     this.state = {
       randomMovie: {},
       votes: [],
-      myRatingsKeys: Object.keys(localStorage).length !== 0
+      myRatingsId: Object.keys(localStorage).length !== 0
         ? Object.keys(localStorage)
         : []
     };
@@ -15,9 +15,9 @@ export default class DisplayRandomMovie extends Component {
     this.addRatingId = this.addRatingId.bind(this);
   }
 
-  addRatingId(ratingKey) {
+  addRatingId(ratingId) {
     this.setState({
-      myRatingsKeys: [...this.state.myRatingsKeys, ratingKey]
+      myRatingsId: [...this.state.myRatingsId, ratingId]
     });
   }
 
@@ -35,8 +35,8 @@ export default class DisplayRandomMovie extends Component {
       .then(response => response.json())
       .then(movieList => {
         const randomMovie = movieList.results[randomMovieInResults];
-        /* if API response is invalid or if movie is already rated get another movie */
-        if (!randomMovie || this.state.myRatingsKeys.includes(randomMovie.id)) {
+        /* if API response is invalid or if movie is already rated */
+        if (!randomMovie || this.state.myRatingsId.includes(randomMovie.id)) {
           this.getRandomMovie();
         } else {
           this.setState({
@@ -53,7 +53,7 @@ export default class DisplayRandomMovie extends Component {
 
   render() {
     const { randomMovie } = this.state;
-    console.log(this.state.myRatingsKeys);
+    console.log(this.state.myRatingsId);
     return (
       <div>
         {
