@@ -58,7 +58,7 @@ export default class DisplayRandomMovie extends Component {
         {
           randomMovie.id &&
           <div>
-            <Movie movie={randomMovie} key={randomMovie.id} addRatingId={this.addRatingId} />
+            <Movie movie={randomMovie} key={randomMovie.id} addRatingId={this.addRatingId} getRandomMovie={this.getRandomMovie} />
             <button className="btn btn--next-movie" onClick={this.getRandomMovie} >
               <i className="fas fa-sync"></i> Film suivant
             </button>

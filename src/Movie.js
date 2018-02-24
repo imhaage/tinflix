@@ -43,6 +43,7 @@ export default class Movie extends Component {
       this.setState({
         isRated: true
       });
+      this.props.getRandomMovie();
     }
   }
 
@@ -78,8 +79,6 @@ export default class Movie extends Component {
             </div>
           }
         </div>
-
-
       </div>
     );
   }
