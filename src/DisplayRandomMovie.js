@@ -12,10 +12,10 @@ export default class DisplayRandomMovie extends Component {
         : []
     };
     this.getRandomMovie = this.getRandomMovie.bind(this);
-    this.addRatingId = this.addRatingId.bind(this);
+    this.addRatingKey = this.addRatingKey.bind(this);
   }
 
-  addRatingId(ratingKey) {
+  addRatingKey(ratingKey) {
     this.setState({
       myRatingsKeys: [...this.state.myRatingsKeys, ratingKey]
     });
@@ -59,7 +59,7 @@ export default class DisplayRandomMovie extends Component {
         {
           randomMovie.id &&
           <div>
-            <Movie movie={randomMovie} key={randomMovie.id} addRatingId={this.addRatingId} />
+            <Movie movie={randomMovie} key={randomMovie.id} addRatingKey={this.addRatingKey} />
             <button className="btn btn--next-movie" onClick={this.getRandomMovie} >
               <i className="fas fa-sync"></i> Film suivant
             </button>

@@ -39,7 +39,7 @@ export default class Movie extends Component {
         rating: rating
       };
       localStorage.setItem(key, JSON.stringify(movieRated));
-      this.props.addRatingId(key);
+      this.props.addRatingKey(key);
       this.setState({
         isRated: true
       });
