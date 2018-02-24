@@ -41,14 +41,13 @@ export default class MyRatings extends Component {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Heure</th>
               <th>Titre</th>
               <th>Supprimer</th>
             </tr>
           </thead>
           <tbody>
             {
-              myRatings && myRatings.reverse().map(ratedMovie => {
+              myRatings && myRatings.map(ratedMovie => {
                 return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} dataId={ratedMovie.id} removeRating={this.removeRating} />;
               })
             }
