@@ -6,14 +6,13 @@ export default class MyRatings extends Component {
     super(props);
     this.state = {
       myRatings: []
-    }
+    };
     this.getRatingsFromLocalStorage = this.getRatingsFromLocalStorage.bind(this);
     this.removeRating = this.removeRating.bind(this);
   }
 
   getRatingsFromLocalStorage() {
     const myRatings = Object.keys(localStorage).map(key => {
-      console.log(JSON.parse(localStorage.getItem(key)));
       return JSON.parse(localStorage.getItem(key));
     });
     this.setState({
@@ -47,7 +46,7 @@ export default class MyRatings extends Component {
           <tbody>
             {
               myRatings && myRatings.map(ratedMovie => {
-                return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} dataId={ratedMovie.id} removeRating={this.removeRating} />
+                return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} dataId={ratedMovie.id} removeRating={this.removeRating} />;
               })
             }
           </tbody>

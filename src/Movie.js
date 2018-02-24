@@ -4,28 +4,30 @@ import StarRatingComponent from 'react-star-rating-component';
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w185';
 
 export default class Movie extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       rating: 0,
       isRated: false
     };
+    this.resetRating = this.resetRating.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
+    this.submitRating = this.submitRating.bind(this);
   }
 
-  resetRating = () => {
+  resetRating() {
     this.setState({
       rating: 0
     });
-  };
+  }
 
-  onStarClick = (nextValue, prevValue, name) => {
+  onStarClick(nextValue, prevValue, name) {
     this.setState({
       rating: nextValue
     });
   }
 
-  submitRating = () => {
+  submitRating() {
     const { movie } = this.props;
     const { rating } = this.state;
     if (rating !== 0) {
@@ -35,11 +37,12 @@ export default class Movie extends Component {
         title: movie.title,
         ratingDate: Date.now(),
         rating: rating
-      }
-      window.localStorage.setItem(key, JSON.stringify(movieRated));
+      };
+      localStorage.setItem(key, JSON.stringify(movieRated));
+      this.props.addRatingId(key);
       this.setState({
         isRated: true
-      })
+      });
     }
   }
 

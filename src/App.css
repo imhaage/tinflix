@@ -41,6 +41,8 @@ p {
 
 .App-tmdbLogo {
   width:60px;
+  top: 2px;
+  position: relative;
 }
 
 /* ========
@@ -85,6 +87,12 @@ p {
 /* ========
 # BUTTONS
 ======== */
+
+/* button icons */
+.svg-inline--fa{
+  margin-right:.3em;
+}
+
 .rating-stars {
   font-size: 2em;
 }
