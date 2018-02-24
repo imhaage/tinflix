@@ -31,13 +31,13 @@ export default class Movie extends Component {
     const { movie } = this.props;
     const { rating } = this.state;
     if (rating !== 0) {
-      const key = `${movie.id}`;
       const movieRated = {
         id: movie.id,
         title: movie.title,
         ratingDate: Date.now(),
         rating: rating
       };
+      const key = movieRated.ratingDate;
       localStorage.setItem(key, JSON.stringify(movieRated));
       this.props.addRatingKey(key);
       this.setState({
@@ -57,9 +57,11 @@ export default class Movie extends Component {
           : 'Non disponible'}
         </p>
         <div className="App-content-poster">
-          {movie.poster_path
-            ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
-            : <div>Image non disponible</div>}
+          {
+            movie.poster_path
+              ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+              : <div>Image non disponible</div>
+          }
         </div>
         <div className="App-content-movie-rating">
           <StarRatingComponent
