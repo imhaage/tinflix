@@ -35,8 +35,8 @@ export default class DisplayRandomMovie extends Component {
       .then(response => response.json())
       .then(movieList => {
         const randomMovie = movieList.results[randomMovieInResults] || undefined;
-        /* if API response is invalid or if movie is already rated */
-        if (!randomMovie || this.state.myRatingsId.includes(randomMovie.id)) {
+        /* if API response is invalid or movie already rated get a new movie */
+        if (randomMovie === undefined || this.state.myRatingsId.indexOf(String(randomMovie.id)) !== -1) {
           this.getRandomMovie();
         } else {
           this.setState({
@@ -53,7 +53,6 @@ export default class DisplayRandomMovie extends Component {
 
   render() {
     const { randomMovie } = this.state;
-    console.log(this.state.myRatingsId);
     return (
       <div>
         {
