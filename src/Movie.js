@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StarRatingComponent from 'react-star-rating-component';
+import imageNonDispo from './imageNonDispo.png';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w185';
 
@@ -9,17 +10,17 @@ export default class Movie extends Component {
     this.state = {
       rating: 0,
       isRated: false,
-      isLoaded: false
+      isImageLoading: true
     };
     this.resetRating = this.resetRating.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
     this.submitRating = this.submitRating.bind(this);
-    this.imageLoaded = this.imageLoaded.bind(this);
+    this.onImageLoaded = this.onImageLoaded.bind(this);
   }
 
-  imageLoaded() {
+  onImageLoaded() {
     this.setState({
-      isLoaded: true
+      isImageLoading: false
     });
   }
 
@@ -31,8 +32,7 @@ export default class Movie extends Component {
 
   onStarClick(nextValue, prevValue, name) {
     this.setState({
-      rating: nextValue,
-      imageLoading: true
+      rating: nextValue
     });
   }
 
@@ -58,7 +58,7 @@ export default class Movie extends Component {
 
   render() {
     const { movie } = this.props;
-    const { rating, isRated } = this.state;
+    const { rating, isRated, isImageLoading } = this.state;
     return (
       <div className="App-content-movie">
         <h1>{movie.title}</h1>
@@ -68,9 +68,16 @@ export default class Movie extends Component {
         </p>
         <div className="App-content-poster">
           {
+            (movie.poster_path && isImageLoading) &&
+            <div className="spinner">
+              <div className="double-bounce1"></div>
+              <div className="double-bounce2"></div>
+            </div>
+          }
+          {
             movie.poster_path
-              ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} onLoad={this.imageLoaded} />
-              : <div>Image non disponible</div>
+              ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} onLoad={this.onImageLoaded} />
+              : !movie.poster_path && <img src={imageNonDispo} alt="Non disponible" />
           }
         </div>
         <div className="App-content-movie-rating">
