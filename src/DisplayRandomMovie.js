@@ -34,7 +34,7 @@ export default class DisplayRandomMovie extends Component {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=31bd793c883026448a472f7cae25d56e&language=fr&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${randomYear}-${randomMonth.length < 2 ? '0' + randomMonth : randomMonth}-01&vote_average.gte=${randomVoteAverage}`)
       .then(response => response.json())
       .then(movieList => {
-        const randomMovie = movieList.results[randomMovieInResults];
+        const randomMovie = movieList.results[randomMovieInResults] || undefined;
         /* if API response is invalid or if movie is already rated */
         if (!randomMovie || this.state.myRatingsId.includes(randomMovie.id)) {
           this.getRandomMovie();
