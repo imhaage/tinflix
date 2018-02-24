@@ -14,6 +14,8 @@ export default class MyRatings extends Component {
   getRatingsFromLocalStorage() {
     const myRatings = Object.keys(localStorage).map(key => {
       return JSON.parse(localStorage.getItem(key));
+    }).sort(function (a, b) {
+      return b.ratingDate - a.ratingDate;
     });
     this.setState({
       myRatings

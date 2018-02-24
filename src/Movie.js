@@ -8,11 +8,19 @@ export default class Movie extends Component {
     super(props);
     this.state = {
       rating: 0,
-      isRated: false
+      isRated: false,
+      isLoaded: false
     };
     this.resetRating = this.resetRating.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
     this.submitRating = this.submitRating.bind(this);
+    this.imageLoaded = this.imageLoaded.bind(this);
+  }
+
+  imageLoaded() {
+    this.setState({
+      isLoaded: true
+    });
   }
 
   resetRating() {
@@ -23,7 +31,8 @@ export default class Movie extends Component {
 
   onStarClick(nextValue, prevValue, name) {
     this.setState({
-      rating: nextValue
+      rating: nextValue,
+      imageLoading: true
     });
   }
 
@@ -58,9 +67,11 @@ export default class Movie extends Component {
           : 'Non disponible'}
         </p>
         <div className="App-content-poster">
-          {movie.poster_path
-            ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
-            : <div>Image non disponible</div>}
+          {
+            movie.poster_path
+              ? <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} onLoad={this.imageLoaded} />
+              : <div>Image non disponible</div>
+          }
         </div>
         <div className="App-content-movie-rating">
           <StarRatingComponent
@@ -69,8 +80,7 @@ export default class Movie extends Component {
             name="rate"
             value={rating}
             onStarClick={this.onStarClick}
-            editing={!isRated}
-          />
+            editing={!isRated} />
           {
             !isRated &&
             <div>
