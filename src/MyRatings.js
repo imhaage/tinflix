@@ -33,7 +33,6 @@ export default class MyRatings extends Component {
 
   render() {
     const { myRatings } = this.state;
-    console.log(myRatings);
     return (
       <div className="App-content">
         <h1>Mes votes</h1>
