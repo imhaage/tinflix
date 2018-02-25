@@ -42,13 +42,14 @@ export default class MyRatings extends Component {
             <tr>
               <th>Date</th>
               <th>Titre</th>
+              <th>Notes</th>
               <th>Supprimer</th>
             </tr>
           </thead>
           <tbody>
             {
               myRatings && myRatings.map(ratedMovie => {
-                return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} dataId={ratedMovie.id} removeRating={this.removeRating} />;
+                return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} rating={ratedMovie.rating} dataId={ratedMovie.id} removeRating={this.removeRating} />;
               })
             }
           </tbody>
