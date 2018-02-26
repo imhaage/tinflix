@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #dddddd;
+  background-color: #E9E7E8;
   color:#505050;
   min-height: 100vh;
 }
@@ -149,6 +149,12 @@ p {
 .my-ratings h1 {
   text-align: center;
   padding: 15px 0;
+}
+
+.my-ratings .alert{
+  color: #B5121F;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .my-ratings{

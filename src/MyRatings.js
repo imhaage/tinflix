@@ -36,23 +36,29 @@ export default class MyRatings extends Component {
     return (
       <div className="my-ratings">
         <h1>Mes votes</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>Titre</th>
-              <th>Date</th>
-              <th>Notes</th>
-              <th>Supprimer</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              myRatings && myRatings.map(ratedMovie => {
-                return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} rating={ratedMovie.rating} dataId={ratedMovie.id} removeRating={this.removeRating} />;
-              })
-            }
-          </tbody>
-        </table>
+        {
+          myRatings.length > 0
+            ?
+            <table>
+              <thead>
+                <tr>
+                  <th>Titre</th>
+                  <th>Date</th>
+                  <th>Notes</th>
+                  <th>Supprimer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  myRatings.map(ratedMovie => {
+                    return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} rating={ratedMovie.rating} dataId={ratedMovie.id} removeRating={this.removeRating} />;
+                  })
+                }
+              </tbody>
+            </table>
+            :
+            <div className="alert"><strong>Aucune évaluation trouvée.</strong></div>
+        }
       </div>
     );
   }
