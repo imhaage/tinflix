@@ -215,6 +215,10 @@ p {
   padding:0.50em;
 }
 
+.my-ratings tr:nth-last-child(2n) {
+  background-color:rgba(220,220,220,0.9);
+}
+
 .my-ratings td:first-child{
   width: 50%;
 }
@@ -287,8 +291,8 @@ p {
 
   .my-ratings th:first-child,
   .my-ratings td:first-child {
-  text-align: center;
-  padding-left: 15px;
-}
+    text-align: center;
+    padding-left: 15px;
+  }
 }
   
