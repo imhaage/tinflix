@@ -29,9 +29,7 @@ export default class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <button className="btn btn--my-ratings" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button>
         </header>
-        <div className="App-content">
-          {myVotesHidden ? <DisplayRandomMovie /> : <MyRatings />}
-        </div>
+        {myVotesHidden ? <DisplayRandomMovie /> : <MyRatings />}
       </div>
     );
   }

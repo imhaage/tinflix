@@ -2,7 +2,12 @@
 # BASE
 ===== */
 html {
-  font-size:100%;
+  font-size:90%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
@@ -84,15 +89,23 @@ p {
   border:1px solid #fff;
 }
 
-.btn--next-movie {
-  width:16rem;
-  margin: 20px 10px;
+.btn--next-movie, .btn--delete {
   background-color: #B70E17;
   color:#fff;
 }
-.btn--next-movie:hover{
+.btn--next-movie:hover, .btn--delete:hover{
   color: #B70E17;
   background-color:#fff;
+}
+
+.btn--next-movie {
+  width:16rem;
+  margin: 20px 10px;
+}
+
+.btn--delete {
+  width:9em;
+  font-size: 0.8rem;
 }
 
 .btn--my-ratings {
@@ -131,10 +144,43 @@ p {
   background-color:#fff;
 }
 
+/* MY RATINGS */
+
+.my-ratings h1 {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.my-ratings{
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.9);
+}
+
+.my-ratings table{
+  width:100%;
+  border-collapse: collapse;
+}
+
+.my-ratings tr {
+  text-align: center;
+}
+
+.my-ratings td {
+  border-top:1px solid #ddd;
+  padding:0.50em;
+}
+
+.my-ratings td:first-child{
+  width: 50%;
+}
+
 /* ============
 # MEDIA QUERIES
 ============ */
-@media (min-width:500px){
+@media (min-width:699px){
+  html{
+    font-size: 100%;
+  }
   body{
     background: url('./cinema.min.jpg') no-repeat top center;
     background-size: cover;
@@ -158,3 +204,34 @@ p {
     margin:50px auto 0;
   }
 }
+
+@media (max-width:700px){
+  .my-ratings table, 
+  .my-ratings thead, 
+  .my-ratings tbody, 
+  .my-ratings th, 
+  .my-ratings td, 
+  .my-ratings tr { 
+    display: block;
+    width:100%;
+  }
+
+  .my-ratings tr {
+    border-top:1px solid #ddd;
+    padding:0.50em;
+  }
+
+  .my-ratings td {
+    border:none;
+  }
+
+  .my-ratings thead,
+  .my-ratings td:nth-child(2){
+    display:none;
+  }
+
+  .my-ratings td:first-child{
+    width:100%;
+  }
+}
+  

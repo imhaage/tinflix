@@ -34,13 +34,13 @@ export default class MyRatings extends Component {
   render() {
     const { myRatings } = this.state;
     return (
-      <div className="App-content">
+      <div className="my-ratings">
         <h1>Mes votes</h1>
         <table>
           <thead>
             <tr>
-              <th>Date</th>
               <th>Titre</th>
+              <th>Date</th>
               <th>Notes</th>
               <th>Supprimer</th>
             </tr>

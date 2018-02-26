@@ -54,7 +54,7 @@ export default class DisplayRandomMovie extends Component {
   render() {
     const { randomMovie } = this.state;
     return (
-      <div>
+      <div className="App-content">
         <Movie
           movie={randomMovie}
           key={randomMovie.id}
