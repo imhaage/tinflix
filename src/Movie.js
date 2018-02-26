@@ -61,8 +61,8 @@ export default class Movie extends Component {
     const { rating, isRated, isImageLoading } = this.state;
     return (
       <div className="App-content-movie">
-        <h1>{movie.title}</h1>
-        <p>Date de sortie: {movie.release_date
+        <h1>{movie.title ? movie.title : 'Titre non disponible'}</h1>
+        <p className="release-date">Date de sortie: {movie.release_date
           ? movie.release_date.split('-').reverse().join('/')
           : 'Non disponible'}
         </p>
@@ -88,13 +88,10 @@ export default class Movie extends Component {
             value={rating}
             onStarClick={this.onStarClick}
             editing={!isRated} />
-          {
-            !isRated &&
-            <div>
-              <button className="btn btn--reset" onClick={this.resetRating}><i className="fas fa-ban"></i> Reset</button>
-              <button className="btn btn--submit" onClick={this.submitRating}><i className="fas fa-check"></i> Valider</button>
-            </div>
-          }
+          <div>
+            <button className="btn btn--reset" onClick={this.resetRating}><i className="fas fa-ban"></i> Reset</button>
+            <button className="btn btn--submit" onClick={this.submitRating}><i className="fas fa-check"></i> Valider</button>
+          </div>
         </div>
       </div>
     );

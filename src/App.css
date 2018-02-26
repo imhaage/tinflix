@@ -1,14 +1,19 @@
-html{
-    font-size:80%;
-  }
+/* =====
+# BASE
+===== */
+html {
+  font-size:100%;
+}
 
-body{
+body {
   font-family: 'Montserrat', sans-serif;
-  background-color:#ececec;
+  background-color: #dddddd;
+  color:#505050;
+  min-height: 100vh;
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.44rem;
   margin: 0;
 }
 
@@ -16,69 +21,45 @@ p {
   margin: 0;
 }
 
-.App {
-  min-height: 100vh;
-}
-
 /* =======
-# HEADER
+# APP
 ======= */
+
+/* HEADER */
+
 .App-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #222;
-  color:#fff;
-  padding: 10px 0 11px;
+  background-color: #111;
+  padding: 10px 0;
   text-align: center;
 }
 
 .App-logo {
   position: relative;
-  top: 2px;
-  width: 100px;
+  width: 80px;
 }
 
 .App-tmdbLogo {
   width:60px;
-  top: 2px;
   position: relative;
+  margin-left: 15px;
+  top:2px;
 }
 
-/* ========
-# CONTENT
-======== */
+/* CONTENT */
+
 .App-content {
+  padding: 15px;
   text-align: center;
-  margin: 0 auto;
 }
 
-.App-content-movie {
-  padding: 20px;
-  margin-top:20px;
+.release-date, .App-content-poster {
+  margin-bottom: 15px;
 }
 
-.App-content-poster {
-  width:185px;
-  height:300px;
-  margin:20px auto;
-  overflow: hidden;
-}
-
-.App-content-poster img {
-  display: block;
-  max-width:100%;
-  max-height:100%;
-  box-shadow: 0 0 8px #999;
-}
-
-.App-content-movie-rating {
-  height:100px;
-}
-
-/* ========
-# BUTTONS
-======== */
+/* BUTTONS */
 
 /* button icons */
 .svg-inline--fa{
@@ -86,123 +67,94 @@ p {
 }
 
 .rating-stars {
-  font-size: 2em;
+  font-size: 2.4em;
+  margin-bottom: 15px;
 }
 
 .btn {
-  font-size: 1rem;
+  font-size: 1.2rem;
   width:7em;
   height:2em;
-  box-shadow: 0 0 2px #333;
   border:none;
-  border-radius: 4px;
+  border-radius: 0.25em;
   cursor:pointer;
+}
+.btn:focus {
+  outline:0;
+  border:1px solid #fff;
 }
 
 .btn--next-movie {
-  font-size:1.2rem;
-  width:10em;
+  width:16rem;
   margin: 20px 10px;
   background-color: #B70E17;
   color:#fff;
 }
+.btn--next-movie:hover{
+  color: #B70E17;
+  background-color:#fff;
+}
 
-.btn--my-votes {
+.btn--my-ratings {
+  font-size: 1rem;
   background-color:transparent;
   color:#fff;
   border: 1px solid white;
+  margin-right: 15px;
+  position: relative;
 }
-
-.App-content-movie .btn {
-  margin:0 5px;
+.btn--my-ratings:hover{
+  color:#111;
+  background-color:#fff;
 }
 
 .btn--submit{
+  width:8rem;
   background-color:#00C871;
   color:#fff;
+  border-radius: 0 0.25em 0.25em 0;
+}
+.btn--submit:hover{
+  color:#00C871;
+  background-color:#fff;
 }
 
 .btn--reset{
+  width:8rem;
   background-color:#777;
   color:#fff;
+  border-radius: 0.25em;
+  border-radius: 0.25em 0 0 0.25em;
+}
+.btn--reset:hover{
+  color:#777;
+  background-color:#fff;
 }
 
 /* ============
 # MEDIA QUERIES
 ============ */
-
 @media (min-width:500px){
-  html{
-    font-size:100%;
-  }
   body{
-    background: url('./film-roll-min.jpg') no-repeat;
+    background: url('./cinema.min.jpg') no-repeat top center;
     background-size: cover;
   }
+
   /* HEADER */
   .App-logo {
     width: 120px;
   }
   .App-tmdbLogo {
     width:80px;
-    margin-left: 20px;
   }
+
   /* CONTENT */
-  .App-content{
-    max-width: 1000px;
-  }
+
   .App-content {
-    background: #fff;
-    background: rgba(255,255,255,.8);
-    box-shadow: 0 0 8px#999;
-  }
-  /* BUTTONS */
-  .btn--my-votes {
-    margin-right: 20px;
-  }
-}
-
-/* =======
-# SPINNER
-======= */
-.spinner {
-  width: 40px;
-  height: 40px;
-
-  position: relative;
-  margin: 100px auto;
-}
-
-.double-bounce1, .double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #00C871;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
-}
-
-.double-bounce2 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
-}
-
-@-webkit-keyframes sk-bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes sk-bounce {
-  0%, 100% { 
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 50% { 
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
+    background-color: #808080;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 0.25em;
+    max-width: 38em;
+    margin:50px auto 0;
   }
 }

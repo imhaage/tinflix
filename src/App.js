@@ -4,6 +4,7 @@ import MyRatings from './MyRatings';
 import logo from './logo.svg';
 import tmdbLogo from './tmdbLogo.svg';
 import './App.css';
+import './spinner.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -26,11 +27,11 @@ export default class App extends Component {
         <header className="App-header">
           <img className="App-tmdbLogo" src={tmdbLogo} alt="The movie DB logo" />
           <img src={logo} className="App-logo" alt="logo" />
-          <button className="btn btn--my-votes" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button>
+          <button className="btn btn--my-ratings" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button>
         </header>
-        <section className="App-content">
+        <div className="App-content">
           {myVotesHidden ? <DisplayRandomMovie /> : <MyRatings />}
-        </section>
+        </div>
       </div>
     );
   }
