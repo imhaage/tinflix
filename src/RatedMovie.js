@@ -16,7 +16,7 @@ export default class MyRatings extends Component {
           name="rate"
           value={rating}
           editing={false} /></td>
-        <td className="ratedDelete"><button className="btn btn--delete" onClick={() => removeRating(dataId)} aria-label="Supprimer"><i className="fas fa-trash"></i> Supprimer</button></td>
+        <td className="ratedDelete"><button className="btn btn--delete" onClick={() => removeRating(dataId)}><i className="fas fa-trash"></i> Supprimer</button></td>
       </tr>
     );
   }

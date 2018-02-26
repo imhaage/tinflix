@@ -105,11 +105,15 @@ p {
   border:1px solid #fff;
 }
 
-.btn--next-movie, .btn--delete {
+.btn--next-movie,
+.btn--delete,
+.btn--delete-all {
   background-color: #B70E17;
   color:#fff;
 }
-.btn--next-movie:hover, .btn--delete:hover{
+.btn--next-movie:hover,
+.btn--delete:hover,
+.btn--delete-all:hover{
   color: #B70E17;
   background-color:#fff;
 }
@@ -122,6 +126,12 @@ p {
 .btn--delete {
   width:9em;
   font-size: 0.8rem;
+}
+
+.btn--delete-all {
+  width:12em;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
 }
 
 .btn--my-ratings {
@@ -162,20 +172,19 @@ p {
 
 /* MY RATINGS */
 
-.my-ratings h1 {
+.my-ratings{
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.9);
   text-align: center;
+}
+
+.my-ratings h1 {
   padding: 15px 0;
 }
 
 .my-ratings .alert{
   color: #B5121F;
-  text-align: center;
   padding-bottom: 15px;
-}
-
-.my-ratings{
-  background-color: #fff;
-  background-color: rgba(255,255,255,0.9);
 }
 
 .my-ratings table{

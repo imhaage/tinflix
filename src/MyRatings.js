@@ -9,6 +9,7 @@ export default class MyRatings extends Component {
     };
     this.getRatingsFromLocalStorage = this.getRatingsFromLocalStorage.bind(this);
     this.removeRating = this.removeRating.bind(this);
+    this.removeAll = this.removeAll.bind(this);
   }
 
   /* load movie ratings saved in localStorage to this.state.myRatings */
@@ -23,10 +24,18 @@ export default class MyRatings extends Component {
     });
   }
 
-  /* remove a movie from localStorage and update this.state.myRatings */
+  /* remove a rated movie from localStorage and update this.state.myRatings */
   removeRating(id) {
     localStorage.removeItem(id);
     this.getRatingsFromLocalStorage();
+  }
+
+  /* remove all rated movies from localStorage and update this.state.myRatings */
+  removeAll() {
+    localStorage.clear();
+    this.setState({
+      myRatings: []
+    });
   }
 
   componentWillMount() {
@@ -41,23 +50,26 @@ export default class MyRatings extends Component {
         {
           myRatings.length > 0
             ?
-            <table>
-              <thead>
-                <tr>
-                  <th>Titre</th>
-                  <th>Date</th>
-                  <th>Notes</th>
-                  <th>Supprimer</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  myRatings.map(ratedMovie => {
-                    return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} rating={ratedMovie.rating} dataId={ratedMovie.id} removeRating={this.removeRating} />;
-                  })
-                }
-              </tbody>
-            </table>
+            <div>
+              <button className="btn btn--delete-all" onClick={this.removeAll}><i className="fas fa-trash"></i> Supprimer tout</button>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Notes</th>
+                    <th>Supprimer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    myRatings.map(ratedMovie => {
+                      return <RatedMovie key={ratedMovie.title} title={ratedMovie.title} date={ratedMovie.ratingDate} rating={ratedMovie.rating} dataId={ratedMovie.id} removeRating={this.removeRating} />;
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
             :
             <div className="alert"><strong>Aucune évaluation trouvée.</strong></div>
         }
