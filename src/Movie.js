@@ -30,12 +30,14 @@ export default class Movie extends Component {
     });
   }
 
+  /* when a star of the [StarRatingComponent] is clicked */
   onStarClick(nextValue, prevValue, name) {
     this.setState({
       rating: nextValue
     });
   }
 
+  /* submit the rating defined by the user */
   submitRating() {
     const { movie } = this.props;
     const { rating } = this.state;

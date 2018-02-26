@@ -14,6 +14,7 @@ export default class App extends Component {
     };
   }
 
+  /* displays [MyRatings] component */
   toggleMyVotes = () => {
     this.setState({
       myVotesHidden: !this.state.myVotesHidden

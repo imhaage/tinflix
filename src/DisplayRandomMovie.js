@@ -15,12 +15,14 @@ export default class DisplayRandomMovie extends Component {
     this.addRatingId = this.addRatingId.bind(this);
   }
 
+  /* add rating id to this.state.myRatingsId to keep track of the movies already rated */
   addRatingId(ratingId) {
     this.setState({
       myRatingsId: [...this.state.myRatingsId, ratingId]
     });
   }
 
+  /* Request to TMDB API */
   getRandomMovie() {
     /* Request from TMDB randomized using release date, vote_average, and movies in the result page */
     const today = new Date();
@@ -30,7 +32,6 @@ export default class DisplayRandomMovie extends Component {
     const randomVoteAverage = (Math.floor(Math.random() * 10) + Math.random()).toFixed(1);
     const randomMovieInResults = randomMinMax(0, 19);
 
-    /* Request to TMDB */
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=31bd793c883026448a472f7cae25d56e&language=fr&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${randomYear}-${randomMonth.length < 2 ? '0' + randomMonth : randomMonth}-01&vote_average.gte=${randomVoteAverage}`)
       .then(response => response.json())
       .then(movieList => {

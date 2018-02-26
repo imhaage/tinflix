@@ -11,6 +11,7 @@ export default class MyRatings extends Component {
     this.removeRating = this.removeRating.bind(this);
   }
 
+  /* load movie ratings saved in localStorage to this.state.myRatings */
   getRatingsFromLocalStorage() {
     const myRatings = Object.keys(localStorage).map(key => {
       return JSON.parse(localStorage.getItem(key));
@@ -22,6 +23,7 @@ export default class MyRatings extends Component {
     });
   }
 
+  /* remove a movie from localStorage and update this.state.myRatings */
   removeRating(id) {
     localStorage.removeItem(id);
     this.getRatingsFromLocalStorage();
