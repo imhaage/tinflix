@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Offline, Online } from 'react-detect-offline';
 import DisplayRandomMovie from './DisplayRandomMovie';
 import MyRatings from './MyRatings';
 import logo from './logo.svg';
@@ -28,9 +29,11 @@ export default class App extends Component {
         <header className="App-header">
           <img className="App-tmdbLogo" src={tmdbLogo} alt="The movie DB logo" />
           <img src={logo} className="App-logo" alt="logo" />
-          <button className="btn btn--my-ratings" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button>
+          <Online><button className="btn btn--my-ratings" onClick={this.toggleMyVotes}>{myVotesHidden ? <span>Mes votes</span> : <span>Voter</span>}</button></Online>
+          <Offline><button className="btn btn--my-ratings btn--disabled" disabled="disabled">Mes votes</button></Offline>
         </header>
-        {myVotesHidden ? <DisplayRandomMovie /> : <MyRatings />}
+        <Online>{myVotesHidden ? <DisplayRandomMovie /> : <MyRatings />}</Online>
+        <Offline><div className="offline-alert">Vous devez être connecté pour utiliser cette application</div></Offline>
       </div>
     );
   }
