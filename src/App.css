@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #E9E7E8;
+  background: #eeeeee;  /* fallback for old browsers */
   color:#505050;
   min-height: 100vh;
 }
@@ -53,7 +53,7 @@ p {
   top:2px;
 }
 
-/* CONTENT */
+/* DISPLAY RANDOM MOVIE */
 
 .App-content {
   padding: 15px;
@@ -62,6 +62,22 @@ p {
 
 .release-date, .App-content-poster {
   margin-bottom: 15px;
+}
+
+.App-content-poster,
+.spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 280px;
+}
+
+.App-content-poster img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height:auto;
+  max-height: 280px;
 }
 
 /* BUTTONS */
